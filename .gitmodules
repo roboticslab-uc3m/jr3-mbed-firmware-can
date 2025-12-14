@@ -1,0 +1,7 @@
+[submodule "mbed-os"]
+	path = mbed-os
+	url = https://github.com/mbed-ce/mbed-os.git
+	shallow = true
+[submodule "jr3"]
+	path = jr3
+	url = https://github.com/roboticslab-uc3m/jr3-mbed-firmware.git

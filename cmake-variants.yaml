@@ -1,0 +1,29 @@
+buildType:
+  default: Develop
+  choices:
+    Develop:
+      short: Develop
+      long: Emit debug information but also optimize
+      buildType: Develop
+    Debug:
+      short: Debug
+      long: Emit debug information and don't optimize
+      buildType: Debug
+    Release:
+      short: Release
+      long: Optimize generated code
+      buildType: Release
+board:
+  # Fill name of your target, which has to correspond to
+  # the target name in targets.json5 file or custom_targets.json5 in case of custom target.
+  default: LPC1768
+  choices:
+    LPC1768:
+      short: LPC1768
+      settings:
+        MBED_TARGET: LPC1768
+        # Fill your upload method according to variants below
+        # - universal: NONE, MBED, JLINK, PYOCD, OPENOCD
+        # - target specific: STLINK, STM32CUBE, LINKSERVER, PICOTOOL, ARDUINO_BOSSAC
+        # For more visit - https://mbed-ce.dev/upload-methods/
+        UPLOAD_METHOD: MBED
