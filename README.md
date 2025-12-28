@@ -4,7 +4,7 @@ An Arm Mbed OS 6 application that performs data acquisition from a JR3 force-tor
 
 Incidentally, support was added for sending simple PWM commands to a Lacquey fetch gripper through a secondary optional CAN channel.
 
-Refer to [roboticslab-uc3m/jr3-mbed-firmware](https://github.com/roboticslab-uc3m/jr3-mbed-firmware/) for the underlying board-sensor communication. This repository focuses on the CAN interface layer with an external master node. Refer to [roboticslab-uc3m/jr3-mbed-firmware-usb](https://github.com/roboticslab-uc3m/jr3-mbed-firmware-usb/) for the USB interface variant.
+Refer to [roboticslab-uc3m/jr3-mbed-firmware](https://github.com/roboticslab-uc3m/jr3-mbed-firmware/) for the underlying board-sensor communication. This repository focuses on the CAN interface layer with an external master node. Refer to [roboticslab-uc3m/jr3-mbed-firmware-uart](https://github.com/roboticslab-uc3m/jr3-mbed-firmware-uart/) for the UART interface variant.
 
 ## Installation
 
@@ -68,5 +68,5 @@ This project depends on the following libraries developed and kindly shared by o
 
 - [roboticslab-uc3m/yarp-devices#263](https://github.com/roboticslab-uc3m/yarp-devices/issues/263)
 - [roboticslab-uc3m/jr3-mbed-firmware](https://github.com/roboticslab-uc3m/jr3-mbed-firmware)
-- [roboticslab-uc3m/jr3-mbed-firmware-usb](https://github.com/roboticslab-uc3m/jr3-mbed-firmware-usb)
+- [roboticslab-uc3m/jr3-mbed-firmware-uart](https://github.com/roboticslab-uc3m/jr3-mbed-firmware-uart)
 - [roboticslab-uc3m/jr3pci-linux](https://github.com/roboticslab-uc3m/jr3pci-linux)
