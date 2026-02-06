@@ -108,6 +108,9 @@ void sendAcknowledge(mbed::CAN & can, mbed::CANMessage & msg, const Jr3Controlle
 
 int main()
 {
+    mbed::DigitalOut led_initialized(LED4, 0);
+    mbed::DigitalOut led_running(LED3, 0);
+
     rtos::ThisThread::sleep_for(2s);
 
     printf("booting\n");
@@ -168,6 +171,7 @@ int main()
         printf("JR3 sensor is connected\n");
         controller.initialize(); // this blocks until the initialization is completed
         can.write(msg_out_bootup);
+        led_initialized = 1;
     }
     else
     {
@@ -195,6 +199,7 @@ int main()
             case JR3_START_SYNC:
                 printf("received JR3 start command (synchronous)\n");
                 controller.startSync(parseCutOffFrequency(msg_in));
+                led_running = 1;
                 sendAcknowledge(can, msg_out_ack, controller);
                 break;
             case JR3_START_ASYNC:
@@ -203,11 +208,13 @@ int main()
                 {
                     sendData(can, msg_out_forces, msg_out_moments, data);
                 }, parseCutOffFrequency(msg_in), parseAsyncPeriod(msg_in, sizeof(uint16_t)));
+                led_running = 1;
                 sendAcknowledge(can, msg_out_ack, controller);
                 break;
             case JR3_STOP:
                 printf("received JR3 stop command\n");
                 controller.stop();
+                led_running = 0;
                 sendAcknowledge(can, msg_out_ack, controller);
                 break;
             case JR3_ZERO_OFFS:
@@ -236,7 +243,9 @@ int main()
                 break;
             case JR3_RESET:
                 printf("received JR3 reset command\n");
+                led_initialized = 0;
                 controller.initialize();
+                led_initialized = 1;
                 sendAcknowledge(can, msg_out_ack, controller);
                 break;
 #if MBED_CONF_APP_CAN_USE_GRIPPER
